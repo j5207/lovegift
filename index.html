@@ -9,10 +9,10 @@
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDVwtjIUmIdX-GInth2K3C0D59PZ2Qoz3Q&sensor=false"></script>
     </head>
     <body>
-        <button id="start_btn" class="btn btn-primary btn-large centered">START</button>
+        <button id="start_btn" class="btn btn-primary btn-large centered">Surprise</button>
         <div id="map_canvas" style="width:100%; height:100%;"></div>
         <div id="curtain"></div>
-        <div id="end_text" class="centered" style="margin-left: -250px">Happy Birthday, My Rita.</div>
+        <div id="end_text" class="centered" style="margin-left: -250px">想你爱你，每日每夜</div>
         <audio preload="auto" id="music">
             <source src="music/dadada.ogg" type="audio/ogg" />
             <source src="music/dadada.mp3" type="audio/mpeg" />
@@ -30,11 +30,11 @@
 
             var map, marker_me, marker_you;
 
-            var WUHAN = new google.maps.LatLng(30.511843, 114.45591),
-                PORTUGAL = new google.maps.LatLng(40.207312, -8.425645);
+            var Baltimore = new google.maps.LatLng(39.336577, -76.622995),
+                Sheffield = new google.maps.LatLng(53.385232, -1.468678);
 
-            var DEFAULT_CENTER = new google.maps.LatLng(29.075375, 60.46875),
-                HEART_ISLAND = new google.maps.LatLng(43.978549,15.383574);
+            var DEFAULT_CENTER = new google.maps.LatLng(33.658893, -41.530388),
+                QingDao = new google.maps.LatLng(36.067056, 120.377848);
 
             function smoothZoom(dest_zoom, callback){
                 callback = callback || function(){};
@@ -82,19 +82,19 @@
 
             function willYouLoveMeForever(){
                 window.my_infowindow = new google.maps.InfoWindow({
-                    content: "I will love you forever, will you?",
-                    position: WUHAN
+                    content: "我最爱的老婆～愿不愿意做老公的乖宝宝，乖乖地爱我呀～",
+                    position: Baltimore
                 });
                 my_infowindow.open(map);
 
                 window.your_infowindow = new google.maps.InfoWindow({
                     content: '<select>' +
-                                '<option value="yes">Yes, I will.</option>' +
-                                '<option value="yes">Yes, I will.</option>' +
+                                '<option value="yes">哼～我就是老公的乖宝宝～超级爱你呢～</option>' +
+                                '<option value="yes">哼哼哼～没有其他选项呢～.</option>' +
                              '</select>' +
                              '<input type="button" value="submit" ' +
                              'onclick="my_infowindow.close();your_infowindow.close();theEnd();" />',
-                    position: PORTUGAL
+                    position: Sheffield
                 });
                 setTimeout(function(){
                     your_infowindow.open(map);
@@ -103,18 +103,20 @@
 
             function showILoveYous(){
                 var i_love_you_s = [
-                    { point: "52.9, -0.5", text: "I Love You" },
+                    { point: "34.02, -118.27", text: "I Love You" },
                     { point: "52.6, 10.9", text: "Ich liebe Dich" },
                     { point: "53.3, 20.7", text: "Kocham Cię" },
-                    { point: "48.8, 5.1", text: "Je t'aime" },
+                    { point: "-1.28, 36.81", text: "nakupenda" },
+                    { point: "33.608248, -7.632438", text: "Je t'aime" },
                     { point: "39.8, -8.9", text: "Eu te amo" },
                     { point: "39.6, -3.3", text: "Te amo" },
                     { point: "42.9, 13.9", text: "Ti amo" },
+                    { point: "25.12, 55.22", text: "أحبك" },
                     { point: "61.5, 88.6", text: "Я люблю тебя" },
                     { point: "36.6, 138.9", text: "私はあなたを愛して" },
                     { point: "36.9, 127.6", text: "난 널 사랑해" },
                     { point: "30.6, 114.3", text: "我爱你" }
-                ];
+                ]; 
                 var infowindows = [];
                 $.each(i_love_you_s, function(i, i_love_you){
                     var point = i_love_you.point.split(",");
@@ -137,21 +139,13 @@
             function showPhotos(){
                 var PHOTO_BASE = "photos/";
                 var photos = [
-                    { point: "43.97855, 15.38354", src: PHOTO_BASE + "you1.jpg" },
-                    { point: "43.97844, 15.38459", src: PHOTO_BASE + "you2.jpg" },
-                    { point: "43.97847, 15.38215", src: PHOTO_BASE + "you3.jpg" },
-                    { point: "43.97907, 15.38198", src: PHOTO_BASE + "you4.jpg" },
-                    { point: "43.97957, 15.38472", src: PHOTO_BASE + "you5.jpg" },
-                    { point: "43.98028, 15.38552", src: PHOTO_BASE + "you6.jpg" },
-                    { point: "43.97932, 15.38112", src: PHOTO_BASE + "me1.jpg" },
-                    { point: "43.97694, 15.38354", src: PHOTO_BASE + "you7.jpg" },
-                    { point: "43.97819, 15.38485", src: PHOTO_BASE + "you8.jpg" },
-                    { point: "43.97861, 15.38178", src: PHOTO_BASE + "you9.jpg" },
-                    { point: "43.97788, 15.38363", src: PHOTO_BASE + "you10.jpg" },
-                    { point: "43.97836, 15.38496", src: PHOTO_BASE + "me2.jpg" },
-                    { point: "43.97952, 15.38545", src: PHOTO_BASE + "you11.jpg" },
-                    { point: "43.97850, 15.38288", src: PHOTO_BASE + "you12.jpg" },
-                    { point: "43.97768, 15.38373", src: PHOTO_BASE + "you13.jpg" }
+                    { point: "36.067056, 120.377848", src: PHOTO_BASE + "1.jpg" },
+                    { point: "36.109570, 120.448610", src: PHOTO_BASE + "2.jpg" },
+                    { point: "36.065354, 120.373386", src: PHOTO_BASE + "3.jpg" },
+                    { point: "36.066207, 120.442314", src: PHOTO_BASE + "4.jpg" },
+                    { point: "36.241853, 120.424752", src: PHOTO_BASE + "5.jpg" },
+                    { point: "36.069705, 120.444692", src: PHOTO_BASE + "6.jpg" },
+                    { point: "36.063779, 120.380218", src: PHOTO_BASE + "7.jpg" },
                 ];
                 var infowindows = [];
                 $.each(photos, function(i, photo){
@@ -162,8 +156,8 @@
                     });
                     infowindows.push(infowindow);
                 });
-                loopInfoWindows(infowindows, 2000, function(){
-                    map.panTo(HEART_ISLAND);
+                loopInfoWindows(infowindows, 4000, function(){
+                    map.panTo(QingDao);
                     smoothZoom(3, function(){
                         map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
                         map.panTo(DEFAULT_CENTER);
@@ -173,9 +167,9 @@
 
             }
 
-            function showHeartIsland(){
-                map.panTo(HEART_ISLAND);
-                smoothZoom(16, function(){
+            function showQingDao(){
+                map.panTo(QingDao);
+                smoothZoom(13, function(){
                     map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
                     setTimeout(function(){showPhotos()}, 2000);
                 });
@@ -187,20 +181,20 @@
                 music.play();
 
                 map = new google.maps.Map(document.getElementById("map_canvas"), {
-                    center: new google.maps.LatLng(29.075375, 60.46875),
+                    center: new google.maps.LatLng(33.658893, -41.530388),
                     zoom: 3,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 });
 
                 marker_me = new google.maps.Marker({ 
-                    position: WUHAN,    
+                    position: Baltimore,    
                     title: "me", 
                     icon: "http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png",
                     animation: google.maps.Animation.DROP,
                     map: map 
                 });
                 marker_you = new google.maps.Marker({ 
-                    position: PORTUGAL, 
+                    position: Sheffield, 
                     title: "you", 
                     icon: "http://maps.gstatic.com/mapfiles/ms2/micons/red-dot.png",
                     animation: google.maps.Animation.DROP,
@@ -210,8 +204,8 @@
                 marker_me.setAnimation(google.maps.Animation.BOUNCE);
 
                 setTimeout(function(){
-                    showHeartIsland();
-                }, 4000);
+                    showQingDao();
+                }, 3000);
             }
         }();
 
